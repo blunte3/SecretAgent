@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 87c9bfecf1ebdf747bf656e612d43276
+  productGUID: d7ec302b679d08447ac085b1cb79fa85
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Secret Agent
+  productName: SecretAgent
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -676,14 +676,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Secret Agent
+  metroPackageName: SecretAgent
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Secret Agent
+  metroApplicationDescription: SecretAgent
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -752,11 +752,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 242acb9e-ce0c-429a-ae8a-8cbeb6a255ce
+  cloudProjectId: e6a55487-8677-47a5-ba04-a4180fe96a16
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Secret Agent
-  organizationId: abhirupd
+  projectName: SecretAgent 2024-02-09_16-10-20
+  organizationId: unity_02eblunt
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
