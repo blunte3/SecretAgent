@@ -1,0 +1,38 @@
+{
+    "Agent Controller": {
+        "checkpoints": [
+            {
+                "steps": 0,
+                "file_path": "results\\=MoreMovementPelletRun1\\Agent Controller\\Agent Controller-0.onnx",
+                "reward": null,
+                "creation_time": 1707861040.6684847,
+                "auxillary_file_paths": [
+                    "results\\=MoreMovementPelletRun1\\Agent Controller\\Agent Controller-0.pt"
+                ]
+            },
+            {
+                "steps": 231846,
+                "file_path": "results\\=MoreMovementPelletRun1\\Agent Controller\\Agent Controller-231846.onnx",
+                "reward": 9.970297029702971,
+                "creation_time": 1707861256.385498,
+                "auxillary_file_paths": [
+                    "results\\=MoreMovementPelletRun1\\Agent Controller\\Agent Controller-231846.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 231846,
+            "file_path": "results\\=MoreMovementPelletRun1\\Agent Controller.onnx",
+            "reward": 9.970297029702971,
+            "creation_time": 1707861256.385498,
+            "auxillary_file_paths": [
+                "results\\=MoreMovementPelletRun1\\Agent Controller\\Agent Controller-231846.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0.dev0",
+        "torch_version": "2.2.0+cpu"
+    }
+}

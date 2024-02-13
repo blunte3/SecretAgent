@@ -8,20 +8,16 @@ using Unity.MLAgents.Sensors;
 public class AgentController : Agent
 {
     [SerializeField] private Transform target;
+    [SerializeField] private float moveSpeed = 4f;
 
     public override void OnEpisodeBegin()
     {
-        transform.localPosition = new Vector3(0f, 0.4f, 0f);
+        //Agent
+        transform.localPosition = new Vector3(Random.Range(-4f,4f), 0.4f, Random.Range(-4f, 4f));
 
-        int rand = Random.Range(0, 2);
-        if(rand == 0)
-        {
-            target.localPosition = new Vector3(-4f, 0.4f, 0f);
-        }
-        if (rand == 1)
-        {
-            target.localPosition = new Vector3(4f, 0.4f, 0f);
-        }
+        //Pellet
+        target.localPosition = new Vector3(Random.Range(-4f, 4f), 0.4f, Random.Range(-4f, 4f));
+
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -32,16 +28,20 @@ public class AgentController : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        float move = actions.ContinuousActions[0];
-        float moveSpeed = 2f;
+        float moveX = actions.ContinuousActions[0];
+        float moveZ = actions.ContinuousActions[1];
 
-        transform.localPosition += new Vector3(move, 0f) * Time.deltaTime * moveSpeed;
+        Vector3 velocity = new Vector3(moveX, 0f, moveZ);
+        velocity = velocity.normalized * Time.deltaTime * moveSpeed;
+
+        transform.localPosition += velocity;
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         ActionSegment<float> continuousActions = actionsOut.ContinuousActions;
         continuousActions[0] = Input.GetAxisRaw("Horizontal");
+        continuousActions[1] = Input.GetAxisRaw("Vertical");
     }
 
     private void OnTriggerEnter(Collider other)
