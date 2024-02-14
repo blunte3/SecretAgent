@@ -1,0 +1,42 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1707941186",
+        "python_version": "3.10.12 | packaged by Anaconda, Inc. | (main, Jul  5 2023, 19:01:18) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\blunte3\\anaconda3\\envs\\mlagents\\Scripts\\mlagents-learn config\\multitrainingagent.yaml --run-id =MultiAgentRun1--resume",
+        "mlagents_version": "1.1.0.dev0",
+        "mlagents_envs_version": "1.1.0.dev0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "2.2.0+cpu",
+        "numpy_version": "1.23.5",
+        "end_time_seconds": "1707941254"
+    },
+    "total": 67.8627972999966,
+    "count": 1,
+    "self": 0.020344200005638413,
+    "children": {
+        "run_training.setup": {
+            "total": 0.12404189999506343,
+            "count": 1,
+            "self": 0.12404189999506343
+        },
+        "TrainerController.start_learning": {
+            "total": 67.7184111999959,
+            "count": 1,
+            "self": 7.210000330815092e-05,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 67.71831889999885,
+                    "count": 1,
+                    "self": 67.71831889999885
+                },
+                "TrainerController._save_models": {
+                    "total": 2.0199993741698563e-05,
+                    "count": 1,
+                    "self": 2.0199993741698563e-05
+                }
+            }
+        }
+    }
+}

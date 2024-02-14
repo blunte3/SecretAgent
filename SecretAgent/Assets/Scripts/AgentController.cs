@@ -25,15 +25,17 @@ public class AgentController : Agent
     //Time keeping variables
     [SerializeField] private int timeForEpisode;
     private float timeLeft;
+    private float rewardTimer = 0f;
+    private const float rewardInterval = 1f;
+
+    //Secret Agent
+    public SecretAgentController classObject;
 
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody>();
         envMaterial = env.GetComponent<Renderer>().material;
     }
-
-
-
 
     public override void OnEpisodeBegin()
     {
@@ -50,6 +52,16 @@ public class AgentController : Agent
     private void Update()
     {
         CheckRemainingTime();
+
+        // Increment the reward timer
+        rewardTimer += Time.deltaTime;
+
+        // If one second has elapsed, add a reward to classObject and reset the timer
+        if (rewardTimer >= rewardInterval)
+        {
+            classObject.AddReward(0.5f);
+            rewardTimer = 0f;
+        }
     }
 
     private void CreatePellet()
@@ -118,7 +130,7 @@ public class AgentController : Agent
     public List<float> distanceList = new List<float>();
     public List<float> badDistanceList = new List<float>();
 
-    private bool CheckOverlap(Vector3 objectWeWantToAvoidOverlapping, Vector3 alreadyExistingObject, float minDistanceWanted)
+    public bool CheckOverlap(Vector3 objectWeWantToAvoidOverlapping, Vector3 alreadyExistingObject, float minDistanceWanted)
     {
         float DistanceBetweenObjects = Vector2.Distance(objectWeWantToAvoidOverlapping, alreadyExistingObject);
         if(minDistanceWanted <= DistanceBetweenObjects)
@@ -174,12 +186,15 @@ public class AgentController : Agent
             //Remove from list
             spawnedPelletsList.Remove(other.gameObject);
             Destroy(other.gameObject);
-            AddReward(10f);
+            AddReward(5f);
+            classObject.AddReward(-5f);
             if(spawnedPelletsList.Count == 0)
             {
                 envMaterial.color = Color.green;
                 RemovePellet(spawnedPelletsList);
-                AddReward(5f);
+                AddReward(10f);
+                classObject.AddReward(-20f);
+                classObject.EndEpisode();
                 EndEpisode();
             }
         }
@@ -188,6 +203,7 @@ public class AgentController : Agent
             envMaterial.color = Color.red;
             RemovePellet(spawnedPelletsList);
             AddReward(-15f);
+            classObject.EndEpisode();
             EndEpisode();
         }
     }
@@ -203,7 +219,9 @@ public class AgentController : Agent
         {
             envMaterial.color = Color.blue;
             AddReward(-15f);
+            classObject.AddReward(-15f);
             RemovePellet(spawnedPelletsList);
+            classObject.EndEpisode();
             EndEpisode();
         }
     }
