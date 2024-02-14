@@ -689,7 +689,11 @@ PrefabInstance:
       objectReference: {fileID: 8791691043181757306, guid: e27efdadf1be6594f892dc8059ffaf6f, type: 3}
     - target: {fileID: 1872219538772827104, guid: 84a6ea396905cd144a51862ef51e66cd, type: 3}
       propertyPath: pelletCount
-      value: 3
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1872219538772827104, guid: 84a6ea396905cd144a51862ef51e66cd, type: 3}
+      propertyPath: timeForEpisode
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1872219538772827104, guid: 84a6ea396905cd144a51862ef51e66cd, type: 3}
       propertyPath: environmentLocation

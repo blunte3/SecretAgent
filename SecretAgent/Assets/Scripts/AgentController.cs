@@ -22,6 +22,10 @@ public class AgentController : Agent
     Material envMaterial;
     public GameObject env;
 
+    //Time keeping variables
+    [SerializeField] private int timeForEpisode;
+    private float timeLeft;
+
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody>();
@@ -38,12 +42,20 @@ public class AgentController : Agent
 
         //Pellet
         CreatePellet();
-        //target.localPosition = new Vector3(Random.Range(-4f, 4f), 0.4f, Random.Range(-4f, 4f));
 
+        //Timer to determine if agent is taking too long
+        EpisodeTimerNew();
+    }
+
+    private void Update()
+    {
+        CheckRemainingTime();
     }
 
     private void CreatePellet()
     {
+        distanceList.Clear();
+        badDistanceList.Clear();
 
         if(spawnedPelletsList.Count != 0)
         {
@@ -52,12 +64,50 @@ public class AgentController : Agent
 
         for(int i = 0; i < pelletCount; i++)
         {
+            int counter = 0;
+            bool distanceGood;
+            bool alreadyDecremented = false;
+
             //Spawning pellet
             GameObject newPellet = Instantiate(food);
             //Make pellet child of the environment
             newPellet.transform.parent = environmentLocation;
             //Give random spawn location
             Vector3 pelletLocation = new Vector3(Random.Range(-4f, 4f), 0.4f, Random.Range(-4f, 4f));
+
+            if(spawnedPelletsList.Count != 0)
+            {
+                for(int k = 0; k < spawnedPelletsList.Count; k++)
+                {
+                    if(counter < 10)
+                    {
+                        distanceGood = CheckOverlap(pelletLocation, spawnedPelletsList[k].transform.localPosition, 5f);
+                        if(distanceGood == false)
+                        {
+                            pelletLocation = new Vector3(Random.Range(-4f, 4f), 0.4f, Random.Range(-4f, 4f));
+                            k--;
+                            alreadyDecremented = true;
+                        }
+
+                        distanceGood = CheckOverlap(pelletLocation, transform.localPosition, 5f);
+                        if (distanceGood == false)
+                        {
+                            pelletLocation = new Vector3(Random.Range(-4f, 4f), 0.4f, Random.Range(-4f, 4f));
+                            if(alreadyDecremented == false)
+                            {
+                                k--;
+                            }
+                        }
+
+                        counter++;
+                    }
+                    else
+                    {
+                        k = spawnedPelletsList.Count;
+                    }
+                }
+            }
+
             //Spawn in new location
             newPellet.transform.localPosition = pelletLocation;
             //Add to list
@@ -65,6 +115,20 @@ public class AgentController : Agent
         }
     }
 
+    public List<float> distanceList = new List<float>();
+    public List<float> badDistanceList = new List<float>();
+
+    private bool CheckOverlap(Vector3 objectWeWantToAvoidOverlapping, Vector3 alreadyExistingObject, float minDistanceWanted)
+    {
+        float DistanceBetweenObjects = Vector2.Distance(objectWeWantToAvoidOverlapping, alreadyExistingObject);
+        if(minDistanceWanted <= DistanceBetweenObjects)
+        {
+            distanceList.Add(DistanceBetweenObjects);        
+            return true;
+        }
+        badDistanceList.Add(DistanceBetweenObjects);
+        return false;
+    }
     private void RemovePellet(List<GameObject> toBeDeletedGameObjectList)
     {
         foreach(GameObject i in toBeDeletedGameObjectList)
@@ -124,6 +188,22 @@ public class AgentController : Agent
             envMaterial.color = Color.red;
             RemovePellet(spawnedPelletsList);
             AddReward(-15f);
+            EndEpisode();
+        }
+    }
+
+    private void EpisodeTimerNew()
+    {
+        timeLeft = Time.time + timeForEpisode;
+    }
+
+    private void CheckRemainingTime()
+    {
+        if(Time.time >= timeLeft)
+        {
+            envMaterial.color = Color.blue;
+            AddReward(-15f);
+            RemovePellet(spawnedPelletsList);
             EndEpisode();
         }
     }
