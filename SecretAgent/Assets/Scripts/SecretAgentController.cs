@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
+using UnityEngine.UI;
 
 public class SecretAgentController : Agent
 {
@@ -19,6 +20,18 @@ public class SecretAgentController : Agent
     public GameObject civilian;
     public AgentController classObject;
 
+    // Hunger level variables
+    public float maxHunger = 50f;
+    public float hungerDecreaseRate = 2f;
+    public float hungerIncreaseAmount = 5f;
+    private float currentHunger;
+
+    // UI variables
+    public Slider hungerSlider;
+
+    //Agent Variables
+    public AgentController agentController;
+
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody>();
@@ -27,7 +40,8 @@ public class SecretAgentController : Agent
 
 
     public override void OnEpisodeBegin()
-    {
+    { 
+
         //Secret Agent
         Vector3 spawnLocation = new Vector3(Random.Range(-4f, 4f), 0.9f, Random.Range(-4f, 4f));
 
@@ -50,6 +64,27 @@ public class SecretAgentController : Agent
         }
 
         transform.localPosition = spawnLocation;
+
+        // Initialize hunger level
+        currentHunger = maxHunger;
+        UpdateHungerUI();
+    }
+
+    private void Update()
+    {
+        // Decrease hunger level over time
+        currentHunger -= hungerDecreaseRate * Time.deltaTime;
+        UpdateHungerUI();
+
+        // Check if the agent is too hungry
+        if (currentHunger <= 0f)
+        {
+            envMaterial.color = Color.magenta;
+            AddReward(-50f);
+            classObject.AddReward(30f);
+            EndEpisode();
+            classObject.EndEpisode();
+        }
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -83,20 +118,39 @@ public class SecretAgentController : Agent
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "Pellet")
+        {
+            //Remove from list
+            agentController.RemovePellet(other.gameObject);
+            Destroy(other.gameObject);
+
+            // Increase hunger level when eating a pellet
+            currentHunger += hungerIncreaseAmount;
+            currentHunger = Mathf.Clamp(currentHunger, 0f, maxHunger); // Ensure hunger level doesn't exceed max
+            UpdateHungerUI();
+        }
         if (other.gameObject.tag == "Agent")
         {
             Vector3 direction = other.transform.position - transform.position;
             direction.y = 0f; // Ensure only horizontal force is applied
             direction.Normalize();
             rb.AddForce(direction * pushForce, ForceMode.Impulse);
+
+            AddReward(2f);
         }
         if (other.gameObject.tag == "Wall")
         {
             envMaterial.color = Color.black;
-            AddReward(-15f);
+            AddReward(-50f);
             EndEpisode();
             classObject.EndEpisode();
         }
+    }
+
+    private void UpdateHungerUI()
+    {
+        // Update UI element to reflect hunger level
+        hungerSlider.value = currentHunger / maxHunger;
     }
 }
 

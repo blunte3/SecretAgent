@@ -12,7 +12,7 @@ public class AgentController : Agent
     [SerializeField] private Transform target;
     public int pelletCount;
     public GameObject food;
-    [SerializeField] private List<GameObject> spawnedPelletsList = new List<GameObject>();
+    [SerializeField] public List<GameObject> spawnedPelletsList = new List<GameObject>();
 
     //Agent variables
     [SerializeField] private float moveSpeed = 4f;
@@ -75,6 +75,7 @@ public class AgentController : Agent
         // Check if the agent is too hungry
         if (currentHunger <= 0f)
         {
+            envMaterial.color = Color.red;
             AddReward(-20f);
             classObject.AddReward(20f);
             EndEpisode();
@@ -214,16 +215,6 @@ public class AgentController : Agent
 
             // Remove pellet
             Destroy(other.gameObject);
-
-            if (spawnedPelletsList.Count == 0)
-            {
-                envMaterial.color = Color.green;
-                RemovePellet(spawnedPelletsList);
-                AddReward(10f);
-                classObject.AddReward(-20f);
-                classObject.EndEpisode();
-                EndEpisode();
-            }
         }
         if (other.gameObject.tag == "Wall")
         {
@@ -231,16 +222,14 @@ public class AgentController : Agent
             if (IsTouchingSecretAgent())
             {
                 envMaterial.color = Color.yellow;
-                classObject.AddReward(50f);
+                classObject.AddReward(100f);
                 AddReward(-25f);
             }
             else
             {
-                envMaterial.color = Color.red;
-                AddReward(-15f);
+                envMaterial.color = Color.black;
+                AddReward(-25f);
             }
-            AddReward(-15f);
-            classObject.AddReward(20f);
             classObject.EndEpisode();
             EndEpisode();
         }
@@ -268,6 +257,12 @@ public class AgentController : Agent
     private void EpisodeTimerNew()
     {
         timeLeft = Time.time + timeForEpisode;
+    }
+
+    // Method to remove a pellet from the list
+    public void RemovePellet(GameObject pellet)
+    {
+        spawnedPelletsList.Remove(pellet);
     }
 
     private void CheckRemainingTime()
