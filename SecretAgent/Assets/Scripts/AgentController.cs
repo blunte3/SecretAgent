@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
+using UnityEngine.UI;
 
 public class AgentController : Agent
 {
@@ -25,11 +26,21 @@ public class AgentController : Agent
     //Time keeping variables
     [SerializeField] private int timeForEpisode;
     private float timeLeft;
-    private float rewardTimer = 0f;
-    private const float rewardInterval = 1f;
+    //private float rewardTimer = 0f;
+    //private const float rewardInterval = 1f;
 
     //Secret Agent
     public SecretAgentController classObject;
+    [SerializeField] private float agentTouchRadius = 1.5f;
+
+    // Hunger level variables
+    public float maxHunger = 100f;
+    public float hungerDecreaseRate = 1f;
+    public float hungerIncreaseAmount = 20f;
+    private float currentHunger;
+
+    // UI variables
+    public Slider hungerSlider;
 
     public override void Initialize()
     {
@@ -47,20 +58,27 @@ public class AgentController : Agent
 
         //Timer to determine if agent is taking too long
         EpisodeTimerNew();
+
+        // Initialize hunger level
+        currentHunger = maxHunger;
+        UpdateHungerUI();
     }
 
     private void Update()
     {
         CheckRemainingTime();
 
-        // Increment the reward timer
-        rewardTimer += Time.deltaTime;
+        // Decrease hunger level over time
+        currentHunger -= hungerDecreaseRate * Time.deltaTime;
+        UpdateHungerUI();
 
-        // If one second has elapsed, add a reward to classObject and reset the timer
-        if (rewardTimer >= rewardInterval)
+        // Check if the agent is too hungry
+        if (currentHunger <= 0f)
         {
-            classObject.AddReward(0.5f);
-            rewardTimer = 0f;
+            AddReward(-20f);
+            classObject.AddReward(20f);
+            EndEpisode();
+            classObject.EndEpisode();
         }
     }
 
@@ -188,7 +206,16 @@ public class AgentController : Agent
             Destroy(other.gameObject);
             AddReward(5f);
             classObject.AddReward(-5f);
-            if(spawnedPelletsList.Count == 0)
+
+            // Increase hunger level when eating a pellet
+            currentHunger += hungerIncreaseAmount;
+            currentHunger = Mathf.Clamp(currentHunger, 0f, maxHunger); // Ensure hunger level doesn't exceed max
+            UpdateHungerUI();
+
+            // Remove pellet
+            Destroy(other.gameObject);
+
+            if (spawnedPelletsList.Count == 0)
             {
                 envMaterial.color = Color.green;
                 RemovePellet(spawnedPelletsList);
@@ -200,12 +227,42 @@ public class AgentController : Agent
         }
         if (other.gameObject.tag == "Wall")
         {
-            envMaterial.color = Color.red;
             RemovePellet(spawnedPelletsList);
+            if (IsTouchingSecretAgent())
+            {
+                envMaterial.color = Color.yellow;
+                classObject.AddReward(50f);
+                AddReward(-25f);
+            }
+            else
+            {
+                envMaterial.color = Color.red;
+                AddReward(-15f);
+            }
             AddReward(-15f);
+            classObject.AddReward(20f);
             classObject.EndEpisode();
             EndEpisode();
         }
+    }
+
+    private bool IsTouchingSecretAgent()
+    {
+        // Check if any colliders of the SecretAgent are touching the Agent
+        Collider[] colliders = Physics.OverlapSphere(transform.position, agentTouchRadius);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("SecretAgent"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    private void UpdateHungerUI()
+    {
+        // Update UI element to reflect hunger level
+        hungerSlider.value = currentHunger / maxHunger;
     }
 
     private void EpisodeTimerNew()
@@ -219,7 +276,7 @@ public class AgentController : Agent
         {
             envMaterial.color = Color.blue;
             AddReward(-15f);
-            classObject.AddReward(-15f);
+            classObject.AddReward(20f);
             RemovePellet(spawnedPelletsList);
             classObject.EndEpisode();
             EndEpisode();

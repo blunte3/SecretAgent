@@ -18,15 +18,24 @@
                 "auxillary_file_paths": [
                     "results\\=MultiAgentHEAVYBOYRun2\\AgentController\\AgentController-512617.pt"
                 ]
+            },
+            {
+                "steps": 615422,
+                "file_path": "results\\=MultiAgentHEAVYBOYRun2\\AgentController\\AgentController-615422.onnx",
+                "reward": 31.818181818181817,
+                "creation_time": 1707944208.6631947,
+                "auxillary_file_paths": [
+                    "results\\=MultiAgentHEAVYBOYRun2\\AgentController\\AgentController-615422.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 512617,
+            "steps": 615422,
             "file_path": "results\\=MultiAgentHEAVYBOYRun2\\AgentController.onnx",
-            "reward": 22.058823529411764,
-            "creation_time": 1707943900.6474688,
+            "reward": 31.818181818181817,
+            "creation_time": 1707944208.6631947,
             "auxillary_file_paths": [
-                "results\\=MultiAgentHEAVYBOYRun2\\AgentController\\AgentController-512617.pt"
+                "results\\=MultiAgentHEAVYBOYRun2\\AgentController\\AgentController-615422.pt"
             ]
         }
     },
@@ -49,15 +58,24 @@
                 "auxillary_file_paths": [
                     "results\\=MultiAgentHEAVYBOYRun2\\SecretAgentController\\SecretAgentController-512493.pt"
                 ]
+            },
+            {
+                "steps": 615345,
+                "file_path": "results\\=MultiAgentHEAVYBOYRun2\\SecretAgentController\\SecretAgentController-615345.onnx",
+                "reward": -24.216216216216218,
+                "creation_time": 1707944208.5923932,
+                "auxillary_file_paths": [
+                    "results\\=MultiAgentHEAVYBOYRun2\\SecretAgentController\\SecretAgentController-615345.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 512493,
+            "steps": 615345,
             "file_path": "results\\=MultiAgentHEAVYBOYRun2\\SecretAgentController.onnx",
-            "reward": -25.91891891891892,
-            "creation_time": 1707943900.7244697,
+            "reward": -24.216216216216218,
+            "creation_time": 1707944208.5923932,
             "auxillary_file_paths": [
-                "results\\=MultiAgentHEAVYBOYRun2\\SecretAgentController\\SecretAgentController-512493.pt"
+                "results\\=MultiAgentHEAVYBOYRun2\\SecretAgentController\\SecretAgentController-615345.pt"
             ]
         }
     },

@@ -1,0 +1,51 @@
+{
+    "SecretAgentController": {
+        "checkpoints": [
+            {
+                "steps": 328392,
+                "file_path": "results\\=HeavySecretOPRun1\\SecretAgentController\\SecretAgentController-328392.onnx",
+                "reward": -1.7560975609756098,
+                "creation_time": 1707944845.995962,
+                "auxillary_file_paths": [
+                    "results\\=HeavySecretOPRun1\\SecretAgentController\\SecretAgentController-328392.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 328392,
+            "file_path": "results\\=HeavySecretOPRun1\\SecretAgentController.onnx",
+            "reward": -1.7560975609756098,
+            "creation_time": 1707944845.995962,
+            "auxillary_file_paths": [
+                "results\\=HeavySecretOPRun1\\SecretAgentController\\SecretAgentController-328392.pt"
+            ]
+        }
+    },
+    "AgentController": {
+        "checkpoints": [
+            {
+                "steps": 328332,
+                "file_path": "results\\=HeavySecretOPRun1\\AgentController\\AgentController-328332.onnx",
+                "reward": 18.88888888888889,
+                "creation_time": 1707944846.0659351,
+                "auxillary_file_paths": [
+                    "results\\=HeavySecretOPRun1\\AgentController\\AgentController-328332.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 328332,
+            "file_path": "results\\=HeavySecretOPRun1\\AgentController.onnx",
+            "reward": 18.88888888888889,
+            "creation_time": 1707944846.0659351,
+            "auxillary_file_paths": [
+                "results\\=HeavySecretOPRun1\\AgentController\\AgentController-328332.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0.dev0",
+        "torch_version": "2.2.0+cpu"
+    }
+}

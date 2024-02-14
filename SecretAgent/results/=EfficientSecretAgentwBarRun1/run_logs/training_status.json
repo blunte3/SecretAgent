@@ -1,0 +1,69 @@
+{
+    "SecretAgentController": {
+        "checkpoints": [
+            {
+                "steps": 499937,
+                "file_path": "results\\=EfficientSecretAgentwBarRun1\\SecretAgentController\\SecretAgentController-499937.onnx",
+                "reward": -7.5396825396825395,
+                "creation_time": 1707948215.9605923,
+                "auxillary_file_paths": [
+                    "results\\=EfficientSecretAgentwBarRun1\\SecretAgentController\\SecretAgentController-499937.pt"
+                ]
+            },
+            {
+                "steps": 673438,
+                "file_path": "results\\=EfficientSecretAgentwBarRun1\\SecretAgentController\\SecretAgentController-673438.onnx",
+                "reward": -11.50943396226415,
+                "creation_time": 1707948432.1975927,
+                "auxillary_file_paths": [
+                    "results\\=EfficientSecretAgentwBarRun1\\SecretAgentController\\SecretAgentController-673438.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 673438,
+            "file_path": "results\\=EfficientSecretAgentwBarRun1\\SecretAgentController.onnx",
+            "reward": -11.50943396226415,
+            "creation_time": 1707948432.1975927,
+            "auxillary_file_paths": [
+                "results\\=EfficientSecretAgentwBarRun1\\SecretAgentController\\SecretAgentController-673438.pt"
+            ]
+        }
+    },
+    "AgentController": {
+        "checkpoints": [
+            {
+                "steps": 499955,
+                "file_path": "results\\=EfficientSecretAgentwBarRun1\\AgentController\\AgentController-499955.onnx",
+                "reward": 12.083333333333334,
+                "creation_time": 1707948216.054591,
+                "auxillary_file_paths": [
+                    "results\\=EfficientSecretAgentwBarRun1\\AgentController\\AgentController-499955.pt"
+                ]
+            },
+            {
+                "steps": 673164,
+                "file_path": "results\\=EfficientSecretAgentwBarRun1\\AgentController\\AgentController-673164.onnx",
+                "reward": 2.5,
+                "creation_time": 1707948432.2695925,
+                "auxillary_file_paths": [
+                    "results\\=EfficientSecretAgentwBarRun1\\AgentController\\AgentController-673164.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 673164,
+            "file_path": "results\\=EfficientSecretAgentwBarRun1\\AgentController.onnx",
+            "reward": 2.5,
+            "creation_time": 1707948432.2695925,
+            "auxillary_file_paths": [
+                "results\\=EfficientSecretAgentwBarRun1\\AgentController\\AgentController-673164.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0.dev0",
+        "torch_version": "2.2.0+cpu"
+    }
+}

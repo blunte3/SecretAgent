@@ -11,6 +11,8 @@ public class SecretAgentController : Agent
     [SerializeField] private float moveSpeed = 4f;
     private Rigidbody rb;
 
+    [SerializeField] private float pushForce = 10f;
+
     Material envMaterial;
     public GameObject env;
 
@@ -20,7 +22,6 @@ public class SecretAgentController : Agent
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody>();
-        rb.mass = 2f;
         envMaterial = env.GetComponent<Renderer>().material;
     }
 
@@ -84,15 +85,17 @@ public class SecretAgentController : Agent
     {
         if (other.gameObject.tag == "Agent")
         {
-            rb.AddForce(transform.forward * 1000f, ForceMode.Force);
-            AddReward(10f);
-            classObject.AddReward(-13f);
+            Vector3 direction = other.transform.position - transform.position;
+            direction.y = 0f; // Ensure only horizontal force is applied
+            direction.Normalize();
+            rb.AddForce(direction * pushForce, ForceMode.Impulse);
         }
         if (other.gameObject.tag == "Wall")
         {
-            envMaterial.color = Color.red;
+            envMaterial.color = Color.black;
             AddReward(-15f);
             EndEpisode();
+            classObject.EndEpisode();
         }
     }
 }

@@ -110,7 +110,7 @@ engine_settings:
   no_graphics_monitor: false
 environment_parameters: null
 checkpoint_settings:
-  run_id: =MultiAgentHEAVYBOYRun2
+  run_id: =HungerBarMultiPelletRun1
   initialize_from: null
   load_model: false
   resume: true

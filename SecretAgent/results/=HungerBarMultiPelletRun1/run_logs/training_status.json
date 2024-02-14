@@ -1,0 +1,123 @@
+{
+    "SecretAgentController": {
+        "checkpoints": [
+            {
+                "steps": 222128,
+                "file_path": "results\\=HungerBarMultiPelletRun1\\SecretAgentController\\SecretAgentController-222128.onnx",
+                "reward": -25.208333333333332,
+                "creation_time": 1707946442.6733904,
+                "auxillary_file_paths": [
+                    "results\\=HungerBarMultiPelletRun1\\SecretAgentController\\SecretAgentController-222128.pt"
+                ]
+            },
+            {
+                "steps": 393968,
+                "file_path": "results\\=HungerBarMultiPelletRun1\\SecretAgentController\\SecretAgentController-393968.onnx",
+                "reward": -23.333333333333332,
+                "creation_time": 1707946802.6470072,
+                "auxillary_file_paths": [
+                    "results\\=HungerBarMultiPelletRun1\\SecretAgentController\\SecretAgentController-393968.pt"
+                ]
+            },
+            {
+                "steps": 425549,
+                "file_path": "results\\=HungerBarMultiPelletRun1\\SecretAgentController\\SecretAgentController-425549.onnx",
+                "reward": -25.0,
+                "creation_time": 1707947232.186091,
+                "auxillary_file_paths": [
+                    "results\\=HungerBarMultiPelletRun1\\SecretAgentController\\SecretAgentController-425549.pt"
+                ]
+            },
+            {
+                "steps": 499955,
+                "file_path": "results\\=HungerBarMultiPelletRun1\\SecretAgentController\\SecretAgentController-499955.onnx",
+                "reward": null,
+                "creation_time": 1707947411.8733392,
+                "auxillary_file_paths": [
+                    "results\\=HungerBarMultiPelletRun1\\SecretAgentController\\SecretAgentController-499955.pt"
+                ]
+            },
+            {
+                "steps": 612700,
+                "file_path": "results\\=HungerBarMultiPelletRun1\\SecretAgentController\\SecretAgentController-612700.onnx",
+                "reward": -70.0,
+                "creation_time": 1707947545.3413022,
+                "auxillary_file_paths": [
+                    "results\\=HungerBarMultiPelletRun1\\SecretAgentController\\SecretAgentController-612700.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 612700,
+            "file_path": "results\\=HungerBarMultiPelletRun1\\SecretAgentController.onnx",
+            "reward": -70.0,
+            "creation_time": 1707947545.3413022,
+            "auxillary_file_paths": [
+                "results\\=HungerBarMultiPelletRun1\\SecretAgentController\\SecretAgentController-612700.pt"
+            ]
+        }
+    },
+    "AgentController": {
+        "checkpoints": [
+            {
+                "steps": 217197,
+                "file_path": "results\\=HungerBarMultiPelletRun1\\AgentController\\AgentController-217197.onnx",
+                "reward": null,
+                "creation_time": 1707946442.753393,
+                "auxillary_file_paths": [
+                    "results\\=HungerBarMultiPelletRun1\\AgentController\\AgentController-217197.pt"
+                ]
+            },
+            {
+                "steps": 389030,
+                "file_path": "results\\=HungerBarMultiPelletRun1\\AgentController\\AgentController-389030.onnx",
+                "reward": 29.571428571428573,
+                "creation_time": 1707946802.5585232,
+                "auxillary_file_paths": [
+                    "results\\=HungerBarMultiPelletRun1\\AgentController\\AgentController-389030.pt"
+                ]
+            },
+            {
+                "steps": 420659,
+                "file_path": "results\\=HungerBarMultiPelletRun1\\AgentController\\AgentController-420659.onnx",
+                "reward": 22.941176470588236,
+                "creation_time": 1707947232.2551022,
+                "auxillary_file_paths": [
+                    "results\\=HungerBarMultiPelletRun1\\AgentController\\AgentController-420659.pt"
+                ]
+            },
+            {
+                "steps": 499937,
+                "file_path": "results\\=HungerBarMultiPelletRun1\\AgentController\\AgentController-499937.onnx",
+                "reward": 20.714285714285715,
+                "creation_time": 1707947415.986626,
+                "auxillary_file_paths": [
+                    "results\\=HungerBarMultiPelletRun1\\AgentController\\AgentController-499937.pt"
+                ]
+            },
+            {
+                "steps": 607882,
+                "file_path": "results\\=HungerBarMultiPelletRun1\\AgentController\\AgentController-607882.onnx",
+                "reward": null,
+                "creation_time": 1707947545.4338448,
+                "auxillary_file_paths": [
+                    "results\\=HungerBarMultiPelletRun1\\AgentController\\AgentController-607882.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 607882,
+            "file_path": "results\\=HungerBarMultiPelletRun1\\AgentController.onnx",
+            "reward": null,
+            "creation_time": 1707947545.4338448,
+            "auxillary_file_paths": [
+                "results\\=HungerBarMultiPelletRun1\\AgentController\\AgentController-607882.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0.dev0",
+        "torch_version": "2.2.0+cpu"
+    }
+}
