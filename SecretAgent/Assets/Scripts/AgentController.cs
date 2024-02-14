@@ -7,14 +7,25 @@ using Unity.MLAgents.Sensors;
 
 public class AgentController : Agent
 {
+    //Pellet variables
     [SerializeField] private Transform target;
-    [SerializeField] private float moveSpeed = 4f;
+    public int pelletCount;
+    public GameObject food;
+    [SerializeField] private List<GameObject> spawnedPelletsList = new List<GameObject>();
 
+    //Agent variables
+    [SerializeField] private float moveSpeed = 4f;
     private Rigidbody rb;
+
+    //Environment variables
+    [SerializeField] private Transform environmentLocation;
+    Material envMaterial;
+    public GameObject env;
 
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody>();
+        envMaterial = env.GetComponent<Renderer>().material;
     }
 
 
@@ -26,8 +37,41 @@ public class AgentController : Agent
         transform.localPosition = new Vector3(Random.Range(-4f,4f), 0.4f, Random.Range(-4f, 4f));
 
         //Pellet
-        target.localPosition = new Vector3(Random.Range(-4f, 4f), 0.4f, Random.Range(-4f, 4f));
+        CreatePellet();
+        //target.localPosition = new Vector3(Random.Range(-4f, 4f), 0.4f, Random.Range(-4f, 4f));
 
+    }
+
+    private void CreatePellet()
+    {
+
+        if(spawnedPelletsList.Count != 0)
+        {
+            RemovePellet(spawnedPelletsList);
+        }
+
+        for(int i = 0; i < pelletCount; i++)
+        {
+            //Spawning pellet
+            GameObject newPellet = Instantiate(food);
+            //Make pellet child of the environment
+            newPellet.transform.parent = environmentLocation;
+            //Give random spawn location
+            Vector3 pelletLocation = new Vector3(Random.Range(-4f, 4f), 0.4f, Random.Range(-4f, 4f));
+            //Spawn in new location
+            newPellet.transform.localPosition = pelletLocation;
+            //Add to list
+            spawnedPelletsList.Add(newPellet);
+        }
+    }
+
+    private void RemovePellet(List<GameObject> toBeDeletedGameObjectList)
+    {
+        foreach(GameObject i in toBeDeletedGameObjectList)
+        {
+            Destroy(i.gameObject);
+        }
+        toBeDeletedGameObjectList.Clear();
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -63,12 +107,23 @@ public class AgentController : Agent
     {
         if(other.gameObject.tag == "Pellet")
         {
-            AddReward(5f);
-            EndEpisode();
+            //Remove from list
+            spawnedPelletsList.Remove(other.gameObject);
+            Destroy(other.gameObject);
+            AddReward(10f);
+            if(spawnedPelletsList.Count == 0)
+            {
+                envMaterial.color = Color.green;
+                RemovePellet(spawnedPelletsList);
+                AddReward(5f);
+                EndEpisode();
+            }
         }
         if (other.gameObject.tag == "Wall")
         {
-            AddReward(-2f);
+            envMaterial.color = Color.red;
+            RemovePellet(spawnedPelletsList);
+            AddReward(-15f);
             EndEpisode();
         }
     }

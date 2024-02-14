@@ -243,114 +243,8 @@ Transform:
   - {fileID: 8034208323727451364}
   - {fileID: 6389971329954578448}
   - {fileID: 4700935927277950086}
-  - {fileID: 2579666465071085687}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4599725385644457144
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2579666465071085687}
-  - component: {fileID: 7657278153946867429}
-  - component: {fileID: 9030528818640691904}
-  - component: {fileID: 3161615298614177867}
-  m_Layer: 0
-  m_Name: Pellet
-  m_TagString: Pellet
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2579666465071085687
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4599725385644457144}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7, y: 0.57, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2207805932312501689}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7657278153946867429
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4599725385644457144}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &9030528818640691904
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4599725385644457144}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 1d326b852aee36d4484d1f6784f4d416, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3161615298614177867
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4599725385644457144}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4844143718950560746
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,9 +676,25 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1872219538772827104, guid: 84a6ea396905cd144a51862ef51e66cd, type: 3}
+      propertyPath: env
+      value: 
+      objectReference: {fileID: 2475677534868590192}
+    - target: {fileID: 1872219538772827104, guid: 84a6ea396905cd144a51862ef51e66cd, type: 3}
+      propertyPath: food
+      value: 
+      objectReference: {fileID: 7357489024261851061, guid: e27efdadf1be6594f892dc8059ffaf6f, type: 3}
+    - target: {fileID: 1872219538772827104, guid: 84a6ea396905cd144a51862ef51e66cd, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 2579666465071085687}
+      objectReference: {fileID: 8791691043181757306, guid: e27efdadf1be6594f892dc8059ffaf6f, type: 3}
+    - target: {fileID: 1872219538772827104, guid: 84a6ea396905cd144a51862ef51e66cd, type: 3}
+      propertyPath: pelletCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1872219538772827104, guid: 84a6ea396905cd144a51862ef51e66cd, type: 3}
+      propertyPath: environmentLocation
+      value: 
+      objectReference: {fileID: 2207805932312501689}
     - target: {fileID: 6756510805883307245, guid: 84a6ea396905cd144a51862ef51e66cd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.00025773048
