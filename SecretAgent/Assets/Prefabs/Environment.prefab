@@ -1532,6 +1532,10 @@ PrefabInstance:
       value: -999
       objectReference: {fileID: 0}
     - target: {fileID: 1006743239195098266, guid: 84a6ea396905cd144a51862ef51e66cd, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: a0e985e068f8ba94d84f162daad32efd, type: 3}
+    - target: {fileID: 1006743239195098266, guid: 84a6ea396905cd144a51862ef51e66cd, type: 3}
       propertyPath: m_BehaviorName
       value: AgentController
       objectReference: {fileID: 0}
@@ -1687,6 +1691,10 @@ PrefabInstance:
       propertyPath: m_CenterOfMass.y
       value: -999
       objectReference: {fileID: 0}
+    - target: {fileID: 1046993607435695079, guid: b0713d88035e27b4981863383fe66d36, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: b27c21c8574150645a4a6258471d5bca, type: 3}
     - target: {fileID: 1046993607435695079, guid: b0713d88035e27b4981863383fe66d36, type: 3}
       propertyPath: m_BehaviorName
       value: SecretAgentController

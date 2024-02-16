@@ -129,14 +129,14 @@ public class SecretAgentController : Agent
             currentHunger = Mathf.Clamp(currentHunger, 0f, maxHunger); // Ensure hunger level doesn't exceed max
             UpdateHungerUI();
         }
-        if (other.gameObject.tag == "Agent")
+        if (other.gameObject.tag == "Agent") //knockback physics for agent collisions
         {
             Vector3 direction = other.transform.position - transform.position;
             direction.y = 0f; // Ensure only horizontal force is applied
             direction.Normalize();
             rb.AddForce(direction * pushForce, ForceMode.Impulse);
 
-            AddReward(2f);
+            AddReward(2f);//makes collisions more likely
         }
         if (other.gameObject.tag == "Wall")
         {
