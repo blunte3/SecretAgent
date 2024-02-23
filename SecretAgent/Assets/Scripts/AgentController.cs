@@ -37,11 +37,14 @@ public class AgentController : Agent
     public float maxHunger = 100f;
     public float hungerDecreaseRate = 1f;
     public float hungerIncreaseAmount = 20f;
-    private float currentHunger;
+    private float currentHunger = 0.0;
 
     // UI variables
     public Slider hungerSlider;
 
+    public bool IsSecret(){
+        return false;
+    }
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody>();

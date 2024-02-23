@@ -17,19 +17,24 @@ public class EnvScript : MonoBehaviour
     public GameObject agent;
     [SerializeField] public List<GameObject> spawnedAgentsList = new List<GameObject>();
 
+    public override void Initialize(){
+        //initialize 
+        
+    }
     private void AddAgent(){
-
-        spawnedAgentsList.Add(agent);
+        if(!agent.IsSecret && agent != null){
+            spawnedAgentsList.Add(agent);
+        }
     }
 
     //loop through the list of Agents, checking all their hunger
     //if hunger <= 0, delete them from list and delete the object
 
     private void CheckAgentHunger(){
-        foreach(GameObject i in spawnedAgentsList){
-            if(i.currentHunger <= 0){
-                Destroy(i.gameObject);
-                spawnedAgentsList.Remove(spawnedAgentsList[i]);
+        for(i = 0; i < spawnedAgentsList.Count; i++){
+            if(spawnedAgentsList[i].GetComponent<currentHunger>() <= 0){
+                Destroy(spawnedAgentsList[i]);
+                spawnedAgentsList.RemoveAt(i);
             }
         }
     }

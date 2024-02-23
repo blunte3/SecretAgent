@@ -32,6 +32,9 @@ public class SecretAgentController : Agent
     //Agent Variables
     public AgentController agentController;
 
+    public bool IsSecret(){
+        return true;
+    }
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody>();
