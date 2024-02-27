@@ -6,7 +6,8 @@ public class EnvScript : MonoBehaviour
 {
     //pellet variables
     [SerializeField] private Transform target;
-    public int pelletCount;
+    public int pelletCountFactor = 10;
+    public int pelletCount = 0;
     public GameObject food;
     //store pellets in this list
      [SerializeField] public List<GameObject> spawnedPelletsList = new List<GameObject>();
@@ -17,13 +18,25 @@ public class EnvScript : MonoBehaviour
     public GameObject agent;
     [SerializeField] public List<GameObject> spawnedAgentsList = new List<GameObject>();
 
-    public override void Initialize(){
+    //env variables
+    [SerializeField] private Transform environmentLocation;
+    Material envMaterial;
+    public GameObject env;
+    void Awake(){
         //initialize 
-        
+        AddAgent();//add all the agents to the list first
+        CreatePellet();//now that the agents are all in the lists, create pellets based on that
+        CheckAgentHunger();
     }
+
     private void AddAgent(){
-        if(!agent.IsSecret && agent != null){
-            spawnedAgentsList.Add(agent);
+        // Find all instances of the AgentController script in the scene
+        AgentController[] agents = FindObjectsOfType<AgentController>();
+
+        // Add the found agents to the spawnedAgentsList
+        foreach (AgentController agent in agents)
+        {
+            spawnedAgentsList.Add(agent.gameObject);
         }
     }
 
@@ -31,8 +44,8 @@ public class EnvScript : MonoBehaviour
     //if hunger <= 0, delete them from list and delete the object
 
     private void CheckAgentHunger(){
-        for(i = 0; i < spawnedAgentsList.Count; i++){
-            if(spawnedAgentsList[i].GetComponent<currentHunger>() <= 0){
+        for(int i = 0; i < spawnedAgentsList.Count; i++){
+            if(spawnedAgentsList[i].getHunger() <= 0){
                 Destroy(spawnedAgentsList[i]);
                 spawnedAgentsList.RemoveAt(i);
             }
@@ -43,7 +56,7 @@ public class EnvScript : MonoBehaviour
     {
         distanceList.Clear();
         badDistanceList.Clear();
-
+        pelletCount = pelletCountFactor*spawnedAgentsList.Count;
         if(spawnedPelletsList.Count != 0)
         {
             RemovePellet(spawnedPelletsList);
@@ -101,15 +114,30 @@ public class EnvScript : MonoBehaviour
             spawnedPelletsList.Add(newPellet);
         }
     }
-
-    public override void OnEpisodeBegin(){
-        AddAgent();
-        CreatePellet();
-        CheckAgentHunger();
+    public bool CheckOverlap(Vector3 objectWeWantToAvoidOverlapping, Vector3 alreadyExistingObject, float minDistanceWanted)
+    {
+        float DistanceBetweenObjects = Vector2.Distance(objectWeWantToAvoidOverlapping, alreadyExistingObject);
+        if(minDistanceWanted <= DistanceBetweenObjects)
+        {
+            distanceList.Add(DistanceBetweenObjects);        
+            return true;
+        }
+        badDistanceList.Add(DistanceBetweenObjects);
+        return false;
     }
+    private void RemovePellet(List<GameObject> toBeDeletedGameObjectList)
+    {
+        foreach(GameObject i in toBeDeletedGameObjectList)
+        {
+            Destroy(i.gameObject);
+        }
+        toBeDeletedGameObjectList.Clear();
+    }
+
         // Update is called once per frame
     void Update()
     {
-        
+        CheckAgentHunger();
+        CreatePellet();
     }
 }

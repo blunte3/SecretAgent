@@ -37,7 +37,7 @@ public class AgentController : Agent
     public float maxHunger = 100f;
     public float hungerDecreaseRate = 1f;
     public float hungerIncreaseAmount = 20f;
-    private float currentHunger = 0.0;
+    public float currentHunger = 0f;
 
     // UI variables
     public Slider hungerSlider;
@@ -51,6 +51,9 @@ public class AgentController : Agent
         envMaterial = env.GetComponent<Renderer>().material;
     }
 
+    public float getHunger(){
+        return currentHunger;
+    }
     public override void OnEpisodeBegin()
     {
         //Agent

@@ -39,6 +39,11 @@ public class SecretAgentController : Agent
     {
         rb = GetComponent<Rigidbody>();
         envMaterial = env.GetComponent<Renderer>().material;
+        DecisionRequester decisionRequester = GetComponent<DecisionRequester>();
+        if (decisionRequester == null)
+        {
+            decisionRequester = gameObject.AddComponent<DecisionRequester>();
+        }
     }
 
 
