@@ -30,8 +30,11 @@ public class AgentController : Agent
     //private const float rewardInterval = 1f;
 
     //Secret Agent
-    public SecretAgentController classObject;
+    public SecretAgentController saObject;
     [SerializeField] private float agentTouchRadius = 1.5f;
+
+    //Strong Agent
+    public StrongAgentController straObject;
 
     // Hunger level variables
     public float maxHunger = 100f;
@@ -77,9 +80,11 @@ public class AgentController : Agent
         {
             envMaterial.color = Color.red;
             AddReward(-20f);
-            classObject.AddReward(20f);
+            saObject.AddReward(20f);
+            straObject.AddReward(20f);
             EndEpisode();
-            classObject.EndEpisode();
+            saObject.EndEpisode();
+            straObject.EndEpisode();
         }
     }
 
@@ -206,7 +211,7 @@ public class AgentController : Agent
             spawnedPelletsList.Remove(other.gameObject);
             Destroy(other.gameObject);
             AddReward(5f);
-            classObject.AddReward(-5f);
+            saObject.AddReward(-5f);
 
             // Increase hunger level when eating a pellet
             currentHunger += hungerIncreaseAmount;
@@ -222,7 +227,7 @@ public class AgentController : Agent
             if (IsTouchingSecretAgent())
             {
                 envMaterial.color = Color.yellow;
-                classObject.AddReward(100f);
+                saObject.AddReward(100f);
                 AddReward(-25f);
             }
             else
@@ -230,7 +235,7 @@ public class AgentController : Agent
                 envMaterial.color = Color.black;
                 AddReward(-25f);
             }
-            classObject.EndEpisode();
+            saObject.EndEpisode();
             EndEpisode();
         }
     }
@@ -271,9 +276,11 @@ public class AgentController : Agent
         {
             envMaterial.color = Color.blue;
             AddReward(-15f);
-            classObject.AddReward(20f);
+            saObject.AddReward(20f);
+            straObject.AddReward(20f);
             RemovePellet(spawnedPelletsList);
-            classObject.EndEpisode();
+            saObject.EndEpisode();
+            straObject.EndEpisode();
             EndEpisode();
         }
     }

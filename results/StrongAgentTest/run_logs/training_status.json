@@ -1,0 +1,181 @@
+{
+    "AgentController": {
+        "checkpoints": [
+            {
+                "steps": 4208,
+                "file_path": "results\\StrongAgentTest\\AgentController\\AgentController-4208.onnx",
+                "reward": 32.03125,
+                "creation_time": 1709325210.4325686,
+                "auxillary_file_paths": [
+                    "results\\StrongAgentTest\\AgentController\\AgentController-4208.pt"
+                ]
+            },
+            {
+                "steps": 6539,
+                "file_path": "results\\StrongAgentTest\\AgentController\\AgentController-6539.onnx",
+                "reward": 18.333333333333332,
+                "creation_time": 1709325419.7349188,
+                "auxillary_file_paths": [
+                    "results\\StrongAgentTest\\AgentController\\AgentController-6539.pt"
+                ]
+            },
+            {
+                "steps": 499964,
+                "file_path": "results\\StrongAgentTest\\AgentController\\AgentController-499964.onnx",
+                "reward": 14.074074074074074,
+                "creation_time": 1709326538.5673175,
+                "auxillary_file_paths": [
+                    "results\\StrongAgentTest\\AgentController\\AgentController-499964.pt"
+                ]
+            },
+            {
+                "steps": 501847,
+                "file_path": "results\\StrongAgentTest\\AgentController\\AgentController-501847.onnx",
+                "reward": 16.944444444444443,
+                "creation_time": 1709326543.6216335,
+                "auxillary_file_paths": [
+                    "results\\StrongAgentTest\\AgentController\\AgentController-501847.pt"
+                ]
+            },
+            {
+                "steps": 501847,
+                "file_path": "results\\StrongAgentTest\\AgentController\\AgentController-501847.onnx",
+                "reward": null,
+                "creation_time": 1709327487.672735,
+                "auxillary_file_paths": [
+                    "results\\StrongAgentTest\\AgentController\\AgentController-501847.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 501847,
+            "file_path": "results\\StrongAgentTest\\AgentController.onnx",
+            "reward": null,
+            "creation_time": 1709327487.672735,
+            "auxillary_file_paths": [
+                "results\\StrongAgentTest\\AgentController\\AgentController-501847.pt"
+            ]
+        }
+    },
+    "SecretAgentController": {
+        "checkpoints": [
+            {
+                "steps": 4208,
+                "file_path": "results\\StrongAgentTest\\SecretAgentController\\SecretAgentController-4208.onnx",
+                "reward": 27.96875,
+                "creation_time": 1709325210.5035694,
+                "auxillary_file_paths": [
+                    "results\\StrongAgentTest\\SecretAgentController\\SecretAgentController-4208.pt"
+                ]
+            },
+            {
+                "steps": 6539,
+                "file_path": "results\\StrongAgentTest\\SecretAgentController\\SecretAgentController-6539.onnx",
+                "reward": 21.666666666666668,
+                "creation_time": 1709325419.6719155,
+                "auxillary_file_paths": [
+                    "results\\StrongAgentTest\\SecretAgentController\\SecretAgentController-6539.pt"
+                ]
+            },
+            {
+                "steps": 499964,
+                "file_path": "results\\StrongAgentTest\\SecretAgentController\\SecretAgentController-499964.onnx",
+                "reward": -7.407407407407407,
+                "creation_time": 1709326538.6763103,
+                "auxillary_file_paths": [
+                    "results\\StrongAgentTest\\SecretAgentController\\SecretAgentController-499964.pt"
+                ]
+            },
+            {
+                "steps": 501847,
+                "file_path": "results\\StrongAgentTest\\SecretAgentController\\SecretAgentController-501847.onnx",
+                "reward": -8.61111111111111,
+                "creation_time": 1709326543.6997573,
+                "auxillary_file_paths": [
+                    "results\\StrongAgentTest\\SecretAgentController\\SecretAgentController-501847.pt"
+                ]
+            },
+            {
+                "steps": 501847,
+                "file_path": "results\\StrongAgentTest\\SecretAgentController\\SecretAgentController-501847.onnx",
+                "reward": null,
+                "creation_time": 1709327487.747736,
+                "auxillary_file_paths": [
+                    "results\\StrongAgentTest\\SecretAgentController\\SecretAgentController-501847.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 501847,
+            "file_path": "results\\StrongAgentTest\\SecretAgentController.onnx",
+            "reward": null,
+            "creation_time": 1709327487.747736,
+            "auxillary_file_paths": [
+                "results\\StrongAgentTest\\SecretAgentController\\SecretAgentController-501847.pt"
+            ]
+        }
+    },
+    "Strong Agent Controller": {
+        "checkpoints": [
+            {
+                "steps": 2497,
+                "file_path": "results\\StrongAgentTest\\Strong Agent Controller\\Strong Agent Controller-2497.onnx",
+                "reward": -47.89473684210526,
+                "creation_time": 1709325210.5716054,
+                "auxillary_file_paths": [
+                    "results\\StrongAgentTest\\Strong Agent Controller\\Strong Agent Controller-2497.pt"
+                ]
+            },
+            {
+                "steps": 4828,
+                "file_path": "results\\StrongAgentTest\\Strong Agent Controller\\Strong Agent Controller-4828.onnx",
+                "reward": -22.77777777777778,
+                "creation_time": 1709325419.5979161,
+                "auxillary_file_paths": [
+                    "results\\StrongAgentTest\\Strong Agent Controller\\Strong Agent Controller-4828.pt"
+                ]
+            },
+            {
+                "steps": 499944,
+                "file_path": "results\\StrongAgentTest\\Strong Agent Controller\\Strong Agent Controller-499944.onnx",
+                "reward": -10.0,
+                "creation_time": 1709326543.433873,
+                "auxillary_file_paths": [
+                    "results\\StrongAgentTest\\Strong Agent Controller\\Strong Agent Controller-499944.pt"
+                ]
+            },
+            {
+                "steps": 500136,
+                "file_path": "results\\StrongAgentTest\\Strong Agent Controller\\Strong Agent Controller-500136.onnx",
+                "reward": -10.0,
+                "creation_time": 1709326543.5379205,
+                "auxillary_file_paths": [
+                    "results\\StrongAgentTest\\Strong Agent Controller\\Strong Agent Controller-500136.pt"
+                ]
+            },
+            {
+                "steps": 500136,
+                "file_path": "results\\StrongAgentTest\\Strong Agent Controller\\Strong Agent Controller-500136.onnx",
+                "reward": null,
+                "creation_time": 1709327487.818738,
+                "auxillary_file_paths": [
+                    "results\\StrongAgentTest\\Strong Agent Controller\\Strong Agent Controller-500136.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500136,
+            "file_path": "results\\StrongAgentTest\\Strong Agent Controller.onnx",
+            "reward": null,
+            "creation_time": 1709327487.818738,
+            "auxillary_file_paths": [
+                "results\\StrongAgentTest\\Strong Agent Controller\\Strong Agent Controller-500136.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0.dev0",
+        "torch_version": "2.2.0+cpu"
+    }
+}

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Pellet
   - Wall
+  - Agent
+  - SecretAgent
+  - StrongAgent
   layers:
   - Default
   - TransparentFX

@@ -6,7 +6,7 @@ using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine.UI;
 
-public class SecretAgentController : Agent
+public class StrongAgentController : Agent
 {
     //SecretAgent variables
     [SerializeField] private float moveSpeed = 4f;
@@ -18,9 +18,8 @@ public class SecretAgentController : Agent
     public GameObject env;
 
     public GameObject civilian;
-
     public AgentController aObject;
-    public StrongAgentController straObject;
+    public SecretAgentController saObject;
 
     // Hunger level variables
     public float maxHunger = 50f;
@@ -34,7 +33,6 @@ public class SecretAgentController : Agent
     //Agent Variables
     public AgentController agentController;
 
-
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody>();
@@ -43,7 +41,7 @@ public class SecretAgentController : Agent
 
 
     public override void OnEpisodeBegin()
-    { 
+    {
 
         //Secret Agent
         Vector3 spawnLocation = new Vector3(Random.Range(-4f, 4f), 0.9f, Random.Range(-4f, 4f));
@@ -87,8 +85,8 @@ public class SecretAgentController : Agent
             aObject.AddReward(30f);
             EndEpisode();
             aObject.EndEpisode();
-            straObject.AddReward(30f);
-            straObject.EndEpisode();
+            saObject.AddReward(30f);
+            saObject.EndEpisode();
         }
     }
 
@@ -133,8 +131,18 @@ public class SecretAgentController : Agent
             currentHunger += hungerIncreaseAmount;
             currentHunger = Mathf.Clamp(currentHunger, 0f, maxHunger); // Ensure hunger level doesn't exceed max
             UpdateHungerUI();
+            AddReward(5f);
         }
         if (other.gameObject.tag == "Agent")
+        {
+            Vector3 direction = other.transform.position - transform.position;
+            direction.y = 0f; // Ensure only horizontal force is applied
+            direction.Normalize();
+            rb.AddForce(direction * pushForce, ForceMode.Impulse);
+
+            AddReward(2f);
+        }
+        if (other.gameObject.tag == "SecretAgent")
         {
             Vector3 direction = other.transform.position - transform.position;
             direction.y = 0f; // Ensure only horizontal force is applied
@@ -149,7 +157,7 @@ public class SecretAgentController : Agent
             AddReward(-50f);
             EndEpisode();
             aObject.EndEpisode();
-            straObject.EndEpisode();
+            saObject.EndEpisode();
         }
     }
 
