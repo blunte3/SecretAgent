@@ -60,7 +60,7 @@ public class AgentController : Agent
         transform.localPosition = new Vector3(Random.Range(-4f,4f), 0.4f, Random.Range(-4f, 4f));
 
         //Pellet
-        CreatePellet();
+        // CreatePellet();
 
         //Timer to determine if agent is taking too long
         EpisodeTimerNew();
@@ -220,11 +220,11 @@ public class AgentController : Agent
             UpdateHungerUI();
 
             // Remove pellet
-            Destroy(other.gameObject);
+            // Destroy(other.gameObject);
         }
         if (other.gameObject.tag == "Wall")
         {
-            RemovePellet(spawnedPelletsList);
+            // RemovePellet(spawnedPelletsList);
             if (IsTouchingSecretAgent())
             {
                 envMaterial.color = Color.yellow;
@@ -278,7 +278,7 @@ public class AgentController : Agent
             envMaterial.color = Color.blue;
             AddReward(-15f);
             classObject.AddReward(20f);
-            RemovePellet(spawnedPelletsList);
+            // RemovePellet(spawnedPelletsList);
             classObject.EndEpisode();
             EndEpisode();
         }

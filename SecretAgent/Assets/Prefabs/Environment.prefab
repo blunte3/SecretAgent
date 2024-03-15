@@ -550,6 +550,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2207805932312501689}
+  - component: {fileID: 5651805400685174708}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -576,6 +577,29 @@ Transform:
   - {fileID: 9002750635187793783}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5651805400685174708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3186523961946757603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0f7ac68c9211c24e9555aaa8af2d997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  pelletCountFactor: 10
+  pelletCount: 0
+  food: {fileID: 0}
+  spawnedPelletsList: []
+  distanceList: []
+  badDistanceList: []
+  agent: {fileID: 0}
+  spawnedAgentsList: []
+  environmentLocation: {fileID: 0}
+  env: {fileID: 0}
 --- !u!1 &3195375495940186243
 GameObject:
   m_ObjectHideFlags: 0

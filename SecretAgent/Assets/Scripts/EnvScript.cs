@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 public class EnvScript : MonoBehaviour
 {
     //pellet variables
     [SerializeField] private Transform target;
     public int pelletCountFactor = 10;
     public int pelletCount = 0;
-    public GameObject food;
+    [SerializeField] public GameObject food;
     //store pellets in this list
      [SerializeField] public List<GameObject> spawnedPelletsList = new List<GameObject>();
     public List<float> distanceList = new List<float>();
@@ -16,7 +16,7 @@ public class EnvScript : MonoBehaviour
 
     //agent tracking
     public GameObject agent;
-    [SerializeField] public List<GameObject> spawnedAgentsList = new List<GameObject>();
+    [SerializeField] public List<AgentController> spawnedAgentsList = new List<AgentController>();
 
     //env variables
     [SerializeField] private Transform environmentLocation;
@@ -31,13 +31,8 @@ public class EnvScript : MonoBehaviour
 
     private void AddAgent(){
         // Find all instances of the AgentController script in the scene
-        AgentController[] agents = FindObjectsOfType<AgentController>();
-
+        spawnedAgentsList = FindObjectsOfType<AgentController>().ToList();
         // Add the found agents to the spawnedAgentsList
-        foreach (AgentController agent in agents)
-        {
-            spawnedAgentsList.Add(agent.gameObject);
-        }
     }
 
     //loop through the list of Agents, checking all their hunger
@@ -46,8 +41,9 @@ public class EnvScript : MonoBehaviour
     private void CheckAgentHunger(){
         for(int i = 0; i < spawnedAgentsList.Count; i++){
             if(spawnedAgentsList[i].getHunger() <= 0){
-                Destroy(spawnedAgentsList[i]);
+                Destroy(spawnedAgentsList[i].gameObject);
                 spawnedAgentsList.RemoveAt(i);
+                i--;
             }
         }
     }
