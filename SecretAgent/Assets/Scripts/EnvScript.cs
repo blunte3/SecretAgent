@@ -26,6 +26,7 @@ public class EnvScript : MonoBehaviour
         //initialize 
         AddAgent();//add all the agents to the list first
         CreatePellet();//now that the agents are all in the lists, create pellets based on that
+        food = GameObjecy.Find(spawnedAgentsList[0]);
         CheckAgentHunger();
     }
 
